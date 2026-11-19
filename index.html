@@ -1,1 +1,69 @@
 # bazar-no
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بازار نو | فروشگاه اینترنتی</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:tahoma;background:#f4f6f8;color:#222}
+header{background:#102b46;color:white;padding:30px;text-align:center}
+header h1{font-size:32px;margin:0}
+nav{background:#087e8b;padding:15px;text-align:center}
+nav a{color:white;text-decoration:none;margin:10px}
+.container{max-width:1100px;margin:auto;padding:20px}
+.hero{background:#102b46;color:white;padding:40px;text-align:center;border-radius:12px}
+.search{width:100%;padding:15px;margin:20px 0;border:1px solid #ddd;border-radius:8px;font-size:16px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
+.product{background:white;padding:20px;border-radius:12px;text-align:center;box-shadow:0 2px 8px #ddd}
+.product h3{color:#087e8b}
+button{background:#087e8b;color:white;border:0;padding:12px 20px;border-radius:7px;cursor:pointer}
+footer{background:#102b46;color:white;text-align:center;padding:25px;margin-top:30px}
+</style>
+</head>
+<body>
+<header>
+<h1>بازار نو</h1>
+<p>بازار آنلاین همه کالاها</p>
+</header>
+<nav>
+<a href="#">خانه</a>
+<a href="#products">فروشگاه</a>
+<a href="#contact">تماس با ما</a>
+</nav>
+<div class="container">
+<section class="hero">
+<h2>به بازار نو خوش آمدید</h2>
+<p>خرید آسان، انتخاب گسترده، تجربه‌ای متفاوت</p>
+</section>
+<input class="search" id="search" placeholder="جستجوی کالا..." oninput="searchProducts()">
+<h2 id="products">فروشگاه محصولات</h2>
+<div class="products">
+<div class="product"><h3>ابزار و تجهیزات</h3><p>انواع ابزار و لوازم فنی</p><button onclick="contact()">سفارش محصول</button></div>
+<div class="product"><h3>پمپ آب</h3><p>انواع پمپ و تجهیزات آبرسانی</p><button onclick="contact()">سفارش محصول</button></div>
+<div class="product"><h3>لوازم خانگی</h3><p>وسایل کاربردی خانه</p><button onclick="contact()">سفارش محصول</button></div>
+<div class="product"><h3>کالای دیجیتال</h3><p>لوازم الکترونیکی و دیجیتال</p><button onclick="contact()">سفارش محصول</button></div>
+<div class="product"><h3>پوشاک</h3><p>انواع لباس و پوشاک</p><button onclick="contact()">سفارش محصول</button></div>
+<div class="product"><h3>لوازم خودرو</h3><p>قطعات و لوازم جانبی خودرو</p><button onclick="contact()">سفارش محصول</button></div>
+</div>
+</div>
+<footer id="contact">
+<h3>بازار نو</h3>
+<p>فروشگاه اینترنتی بازار نو</p>
+<p>تمام حقوق محفوظ است.</p>
+</footer>
+<script>
+function searchProducts(){
+let q=document.getElementById('search').value;
+document.querySelectorAll('.product').forEach(p=>{
+p.style.display=p.innerText.includes(q)?'block':'none';
+});
+}
+function contact(){
+alert('اطلاعات تماس فروشگاه هنوز ثبت نشده است.');
+}
+</script>
+</body>
+</html>
