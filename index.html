@@ -1,69 +1,107 @@
-# bazar-no
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بازار نو | فروشگاه اینترنتی</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بازار نو | خرید آسان</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:tahoma;background:#f4f6f8;color:#222}
-header{background:#102b46;color:white;padding:30px;text-align:center}
-header h1{font-size:32px;margin:0}
-nav{background:#087e8b;padding:15px;text-align:center}
-nav a{color:white;text-decoration:none;margin:10px}
-.container{max-width:1100px;margin:auto;padding:20px}
-.hero{background:#102b46;color:white;padding:40px;text-align:center;border-radius:12px}
-.search{width:100%;padding:15px;margin:20px 0;border:1px solid #ddd;border-radius:8px;font-size:16px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
-.product{background:white;padding:20px;border-radius:12px;text-align:center;box-shadow:0 2px 8px #ddd}
-.product h3{color:#087e8b}
-button{background:#087e8b;color:white;border:0;padding:12px 20px;border-radius:7px;cursor:pointer}
-footer{background:#102b46;color:white;text-align:center;padding:25px;margin-top:30px}
+:root{--ink:#182230;--muted:#667085;--brand:#146c5a;--soft:#f3f7f5;--line:#e5e9e7}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f7f8fa;color:var(--ink)}
+header{background:linear-gradient(120deg,#104d43,#19856d);color:#fff;padding:24px 16px}
+.wrap{max-width:1080px;margin:auto;padding:0 16px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+h1{margin:0;font-size:28px}header p{margin:10px 0 0;color:#e2f3ed}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}nav a{color:white;text-decoration:none;background:#ffffff20;padding:8px 12px;border-radius:9px}
+main{padding:24px 0}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+input,select,textarea{font:inherit;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;min-width:0}
+#search{flex:1;min-width:180px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;align-items:start}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.card,.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;box-shadow:0 3px 14px #15251a08}
+.pic{height:100px;background:var(--soft);border-radius:11px;display:grid;place-items:center;font-size:42px}
+.card h3{font-size:16px;margin:12px 0 7px}.price{font-weight:bold;color:var(--brand);margin:8px 0 12px}
+button{font:inherit;border:0;border-radius:10px;padding:10px 13px;cursor:pointer;background:var(--brand);color:#fff}
+button.secondary{background:#edf4f1;color:var(--brand)}button:disabled{opacity:.5;cursor:not-allowed}
+.panel{position:sticky;top:12px}.panel h2{font-size:18px;margin:0 0 12px}
+.cartline{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line);padding:9px 0;font-size:13px}
+.qty{display:flex;align-items:center;gap:6px}.qty button{padding:3px 8px}
+.total{display:flex;justify-content:space-between;font-weight:bold;margin:14px 0}
+form{display:grid;gap:9px;margin-top:12px}form input,form textarea{width:100%}small,.muted{color:var(--muted);font-size:12px;line-height:1.8}
+.notice{background:#fff8e8;border:1px solid #f1dfb7;padding:11px;border-radius:10px;font-size:12px;line-height:1.9;margin-top:12px}
+footer{text-align:center;color:var(--muted);padding:25px 12px;font-size:12px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.panel{position:static}.top h1{font-size:24px}}
 </style>
 </head>
 <body>
-<header>
-<h1>بازار نو</h1>
-<p>بازار آنلاین همه کالاها</p>
-</header>
-<nav>
-<a href="#">خانه</a>
-<a href="#products">فروشگاه</a>
-<a href="#contact">تماس با ما</a>
-</nav>
-<div class="container">
-<section class="hero">
-<h2>به بازار نو خوش آمدید</h2>
-<p>خرید آسان، انتخاب گسترده، تجربه‌ای متفاوت</p>
-</section>
-<input class="search" id="search" placeholder="جستجوی کالا..." oninput="searchProducts()">
-<h2 id="products">فروشگاه محصولات</h2>
-<div class="products">
-<div class="product"><h3>ابزار و تجهیزات</h3><p>انواع ابزار و لوازم فنی</p><button onclick="contact()">سفارش محصول</button></div>
-<div class="product"><h3>پمپ آب</h3><p>انواع پمپ و تجهیزات آبرسانی</p><button onclick="contact()">سفارش محصول</button></div>
-<div class="product"><h3>لوازم خانگی</h3><p>وسایل کاربردی خانه</p><button onclick="contact()">سفارش محصول</button></div>
-<div class="product"><h3>کالای دیجیتال</h3><p>لوازم الکترونیکی و دیجیتال</p><button onclick="contact()">سفارش محصول</button></div>
-<div class="product"><h3>پوشاک</h3><p>انواع لباس و پوشاک</p><button onclick="contact()">سفارش محصول</button></div>
-<div class="product"><h3>لوازم خودرو</h3><p>قطعات و لوازم جانبی خودرو</p><button onclick="contact()">سفارش محصول</button></div>
-</div>
-</div>
-<footer id="contact">
-<h3>بازار نو</h3>
-<p>فروشگاه اینترنتی بازار نو</p>
-<p>تمام حقوق محفوظ است.</p>
-</footer>
+<header><div class="wrap">
+ <div class="top"><h1>بازار نو</h1><strong>فروشگاه اینترنتی</strong></div>
+ <p>خرید آسان، انتخاب متنوع، ثبت سفارش مستقیم</p>
+ <nav><a href="#products">محصولات</a><a href="#cart">سبد خرید</a><a href="#contact">ارتباط با ما</a></nav>
+</div></header>
+<main class="wrap">
+ <div class="toolbar">
+  <input id="search" type="search" placeholder="جست‌وجوی کالا..." aria-label="جست‌وجوی کالا">
+  <select id="category" aria-label="دسته‌بندی">
+   <option value="همه">همه دسته‌ها</option><option>ابزار</option><option>خانه و آشپزخانه</option><option>تجهیزات</option>
+  </select>
+ </div>
+ <div class="layout">
+  <section id="products"><h2>محصولات</h2><div class="products" id="productList"></div></section>
+  <aside class="panel" id="cart">
+   <h2>سبد خرید <span class="muted" id="count">(۰ کالا)</span></h2>
+   <div id="cartItems"><p class="muted">سبد خرید شما خالی است.</p></div>
+   <div class="total"><span>مبلغ کل</span><span id="total">۰ تومان</span></div>
+   <form id="orderForm">
+    <strong>اطلاعات تحویل سفارش</strong>
+    <input name="name" placeholder="نام و نام خانوادگی" required>
+    <input name="phone" inputmode="tel" placeholder="شماره تماس" required>
+    <textarea name="address" rows="2" placeholder="نشانی کامل تحویل" required></textarea>
+    <textarea name="note" rows="2" placeholder="توضیحات سفارش (اختیاری)"></textarea>
+    <button type="submit" id="submit">ثبت سفارش در واتساپ</button>
+   </form>
+   <div class="notice">با زدن دکمه، متن سفارش در واتساپ باز می‌شود. برای نهایی‌شدن سفارش، پیام را در واتساپ ارسال کنید. پرداخت آنلاین در این نسخه فعال نیست.</div>
+  </aside>
+ </div>
+ <section id="contact" style="margin-top:26px"><h2>ارتباط با بازار نو</h2><p class="muted">برای پیگیری سفارش، از طریق واتساپ با فروشگاه در تماس باشید.</p></section>
+</main>
+<footer>© بازار نو — تمامی حقوق محفوظ است.</footer>
 <script>
-function searchProducts(){
-let q=document.getElementById('search').value;
-document.querySelectorAll('.product').forEach(p=>{
-p.style.display=p.innerText.includes(q)?'block':'none';
+const products = [
+ {id:1,name:"پمپ آب",category:"تجهیزات",price:3500000,emoji:"💧"},
+ {id:2,name:"جعبه ابزار",category:"ابزار",price:850000,emoji:"🧰"},
+ {id:3,name:"دریل",category:"ابزار",price:2400000,emoji:"🔩"},
+ {id:4,name:"چراغ LED",category:"تجهیزات",price:420000,emoji:"💡"},
+ {id:5,name:"کتری برقی",category:"خانه و آشپزخانه",price:1250000,emoji:"🫖"},
+ {id:6,name:"سرویس نظم‌دهنده",category:"خانه و آشپزخانه",price:690000,emoji:"📦"}
+];
+const waNumber = "989197649207"; // شماره تأییدشده، با قالب بین‌المللی واتساپ
+const cart = {};
+const fmt = n => new Intl.NumberFormat("fa-IR").format(n) + " تومان";
+function renderProducts(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ const c=document.getElementById("category").value;
+ const items=products.filter(p=>(c==="همه"||p.category===c)&&p.name.toLowerCase().includes(q));
+ document.getElementById("productList").innerHTML=items.map(p=>`<article class="card"><div class="pic">${p.emoji}</div><h3>${p.name}</h3><small>${p.category}</small><div class="price">${fmt(p.price)}</div><button onclick="add(${p.id})">افزودن به سبد</button></article>`).join("") || "<p>محصولی پیدا نشد.</p>";
+}
+function add(id){cart[id]=(cart[id]||0)+1;renderCart()}
+function change(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];renderCart()}
+function renderCart(){
+ const entries=Object.entries(cart);
+ let qty=0,sum=0;
+ document.getElementById("cartItems").innerHTML=entries.length?entries.map(([id,n])=>{const p=products.find(x=>x.id==id);qty+=n;sum+=p.price*n;return `<div class="cartline"><div>${p.name}<br><small>${fmt(p.price)}</small></div><div class="qty"><button class="secondary" type="button" onclick="change(${id},-1)">−</button><b>${n}</b><button class="secondary" type="button" onclick="change(${id},1)">+</button></div></div>`}).join(""):"<p class='muted'>سبد خرید شما خالی است.</p>";
+ document.getElementById("count").textContent=`(${new Intl.NumberFormat("fa-IR").format(qty)} کالا)`;
+ document.getElementById("total").textContent=fmt(sum);
+ document.getElementById("submit").disabled=!entries.length;
+}
+document.getElementById("search").addEventListener("input",renderProducts);
+document.getElementById("category").addEventListener("change",renderProducts);
+document.getElementById("orderForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ if(!Object.keys(cart).length){alert("سبد خرید خالی است.");return}
+ const f=new FormData(e.target);
+ const lines=Object.entries(cart).map(([id,n])=>{const p=products.find(x=>x.id==id);return `• ${p.name} × ${n} — ${fmt(p.price*n)}`});
+ const total=Object.entries(cart).reduce((s,[id,n])=>s+products.find(p=>p.id==id).price*n,0);
+ const msg=["سلام، برای ثبت سفارش از بازار نو پیام می‌دهم.","",`نام: ${f.get("name")}`,`تلفن: ${f.get("phone")}`,`نشانی: ${f.get("address")}`,"","اقلام سفارش:",...lines,"",`مبلغ کل: ${fmt(total)}`,`توضیحات: ${f.get("note")||"ندارد"}`].join("\n");
+ window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`,"_blank");
 });
-}
-function contact(){
-alert('اطلاعات تماس فروشگاه هنوز ثبت نشده است.');
-}
+renderProducts();renderCart();
 </script>
-</body>
-</html>
+</body></html>
